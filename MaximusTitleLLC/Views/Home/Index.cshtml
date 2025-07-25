@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "Maximus Title";
+}
+
+<link href="~/css/Home/Index.css" rel="stylesheet" />
+
+<div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide slide-1">
+            <div class="slide-content">
+                <h1>MORE THAN TITLE INSURANCE</h1>
+                <a class="btn btn-secondary">
+                    LEARN MORE
+                </a>
+            </div>
+        </div>
+        <div class="carousel-slide slide-2">
+            <div class="slide-content">
+                <h1>WHAT CAN WE DO FOR YOU?</h1>
+                <a class="btn btn-secondary">
+                    VIEW SERVICES
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-arrow prev" id="prevBtn">‹</button>
+    <button class="carousel-arrow next" id="nextBtn">›</button>
+
+    <div class="carousel-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-3">WELCOME TO MAXIMUS TITLE</h5>
+                <p class="card-text">We partner with property owners and developers to help them make accurate, profitable underwriting decisions. We specialize in commercial transactions, insuring hundreds of policies worth over $1 billiom every year.</p>
+                <a class="btn btn-primary text-white">ABOUT US</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 ">
+        <div class="card bg-primary  text-white">
+            <div class="card-body">
+                <h5 class="mb-3"><strong>WHY MAXIMUS TITLE?</strong></h5>
+                <p class="card-text">We reduce the risk for your most critical transactions, coordinating any and all aspects of your commercial closings and delivering meticulous monitoring of all your holdings. Our clients and partners enjoy a number of critical money saving services, but the most important service we provide is the assurance that your transaction will close in a timely, convenient manner, with all parties completeley satisfied.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    class Carousel {
+        constructor() {
+            this.currentSlide = 0;
+            this.totalSlides = 2;
+            this.autoSlideInterval = null;
+            this.track = document.getElementById('carouselTrack');
+            this.prevBtn = document.getElementById('prevBtn');
+            this.nextBtn = document.getElementById('nextBtn');
+            this.dots = document.querySelectorAll('.dot');
+
+            this.init();
+        }
+
+        init() {
+            this.prevBtn.addEventListener('click', () => this.previousSlide());
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+            this.dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => this.goToSlide(index));
+            });
+
+            this.startAutoSlide();
+
+            // Pause auto-slide on hover
+            this.track.addEventListener('mouseenter', () => this.stopAutoSlide());
+            this.track.addEventListener('mouseleave', () => this.startAutoSlide());
+        }
+
+        updateSlide() {
+            const translateX = -this.currentSlide * 50;
+            this.track.style.transform = `translateX(${translateX}%)`;
+
+            // Update dots
+            this.dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === this.currentSlide);
+            });
+
+            // Trigger text animation
+            this.animateText();
+        }
+
+        animateText() {
+            const currentSlideEl = this.track.children[this.currentSlide];
+            const h1 = currentSlideEl.querySelector('h1');
+            const a = currentSlideEl.querySelector('a');
+
+            // Remove animation classes
+            h1.style.animation = 'none';
+            a.style.animation = 'none';
+
+            // Force reflow
+            h1.offsetHeight;
+            a.offsetHeight;
+
+            // Re-add animation classes
+            h1.style.animation = 'slideInUp 0.8s ease-out 0.3s forwards';
+            a.style.animation = 'slideInUp 0.8s ease-out 0.6s forwards';
+        }
+
+        nextSlide() {
+            this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+            this.updateSlide();
+        }
+
+        previousSlide() {
+            this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+            this.updateSlide();
+        }
+
+        goToSlide(slideIndex) {
+            this.currentSlide = slideIndex;
+            this.updateSlide();
+        }
+
+        startAutoSlide() {
+            this.autoSlideInterval = setInterval(() => {
+                this.nextSlide();
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        stopAutoSlide() {
+            if (this.autoSlideInterval) {
+                clearInterval(this.autoSlideInterval);
+                this.autoSlideInterval = null;
+            }
+        }
+    }
+
+    // Initialize carousel when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        new Carousel();
+    });
+</script>

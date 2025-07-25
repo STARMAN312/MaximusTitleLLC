@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="--primary01: rgba(0, 54, 105, 0.1); --primary02: rgba(0, 54, 105, 0.2); --primary03: rgba(0, 54, 105, 0.3); --primary06: rgba(0, 54, 105, 0.6); --primary09: rgba(0, 54, 105, 0.9); --primary05: rgba(0, 54, 105, 0.5); --primary-bg-color: #003669; --primary-bg-hover: #00366995; --primary-bg-border: #003669; --dark-null: #003669; --transparent-null: #00366995; --primary-transparentcolor: #00366920; --darkprimary-null: #00366920; --transparentprimary-null: #00366920;">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Title -->
+	<title>@ViewData["Title"]</title>
+
+	<!-- Favicon -->
+	<link rel="icon" href="~/img/brand/favicon.png" type="image/x-icon" />
+
+	<!-- Icons css -->
+	<link href="~/css/icons.css" rel="stylesheet">
+
+	<!--  bootstrap css-->
+	<link id="style" href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+	<!-- style css -->
+	<link href="~/css/style.css" rel="stylesheet">
+	<link href="~/css/style-dark.css" rel="stylesheet">
+	<link href="~/css/style-transparent.css" rel="stylesheet">
+
+	<!---Skinmodes css-->
+	<link href="~/css/skin-modes.css" rel="stylesheet" />
+
+</head>
+
+<body class="ltr main-body app light-theme horizontal sidebar-gone">
+
+	<!-- Loader -->
+	<div id="global-loader">
+		<img src="~/img/loader.svg" class="loader-img" alt="Loader">
+	</div>
+	<!-- /Loader -->
+	<!-- Page -->
+	<div class="page">
+
+		<div>
+			<!-- main-header -->
+			<div class="main-header side-header sticky nav nav-item">
+				<div class=" main-container container-fluid">
+					<div class="main-header-left ">
+						<div class="responsive-logo">
+							<a asp-controller="Home" asp-action="Index" class="header-logo">
+								<img src="~/img/brand/logo.jpg" class="mobile-logo logo-1" alt="logo">
+							</a>
+						</div>
+						<div class="app-sidebar__toggle" data-bs-toggle="sidebar">
+							<a class="open-toggle" href="javascript:void(0);"><i class="header-icon fe fe-align-left"></i></a>
+							<a class="close-toggle" href="javascript:void(0);"><i class="header-icon fe fe-x"></i></a>
+						</div>
+						<div class="logo-horizontal">
+							<a asp-controller="Home" asp-action="Index" class="header-logo">
+								<img src="~/img/brand/logo.jpg" class="mobile-logo logo-1" alt="logo">
+							</a>
+						</div>
+					</div>
+					<div class="main-header-right">
+						<button class="navbar-toggler navresponsive-toggler d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon fe fe-more-vertical "></span>
+						</button>
+						<div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0">
+							<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+								<ul class="nav nav-item header-icons navbar-nav-right ms-auto">
+									<li class="nav-item">
+										<a></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /main-header -->
+			<!-- main-sidebar -->
+			<div class="sticky">
+				<aside class="app-sidebar">
+					<div class="main-sidebar-header active">
+						<a class="header-logo active" asp-controller="Home" asp-action="Index">
+							<img src="~/img/brand/logo.png" class="main-logo  desktop-logo" alt="logo">
+							<img src="~/img/brand/favicon.png" class="main-logo  mobile-logo" alt="logo">
+						</a>
+					</div>
+				</aside>
+			</div>
+			<!-- main-sidebar -->
+		</div>
+
+		<!-- main-content -->
+		<div class="main-content app-content">
+			<!-- container -->
+			<div class="main-container container-fluid">
+				@RenderBody()
+			</div>
+			<!-- /Container -->
+		</div>
+		<!-- /main-content -->
+		<!-- Footer opened -->
+		<div class="main-footer">
+			<div class="col-md-12 col-sm-12 text-center">
+				<div class="container-fluid pt-0 ht-100p">
+					Copyright © <script>document.write(new Date().getFullYear());</script>
+					<a class="text-primary">Maximus Title LLC</a>.
+				</div>
+			</div>
+		</div>
+		<!-- Footer closed -->
+	</div>
+	<!-- End Page -->
+	<!-- Back-to-top -->
+	<a href="#top" id="back-to-top"><i class="las la-arrow-up"></i></a>
+
+	<!-- JQuery min js -->
+	<script src="~/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap js -->
+	<script src="~/plugins/bootstrap/js/popper.min.js"></script>
+	<script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Internal Chart.Bundle js-->
+	<script src="~/plugins/chart.js/Chart.bundle.min.js"></script>
+
+	<!-- Moment js -->
+	<script src="~/plugins/moment/moment.js"></script>
+
+	<!-- INTERNAL Apexchart js -->
+	<script src="~/js/apexcharts.js"></script>
+
+	<!--Internal Sparkline js -->
+	<script src="~/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+	<!-- Moment js -->
+	<script src="~/plugins/raphael/raphael.min.js"></script>
+
+	<!--Internal  Perfect-scrollbar js -->
+	<script src="~/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="~/plugins/perfect-scrollbar/p-scroll.js"></script>
+
+	<!-- Eva-icons js -->
+	<script src="~/js/eva-icons.min.js"></script>
+
+	<!-- right-sidebar js -->
+	<script src="~/plugins/sidebar/sidebar.js"></script>
+	<script src="~/plugins/sidebar/sidebar-custom.js"></script>
+
+	<!-- Sidebar js -->
+	<script src="~/plugins/side-menu/sidemenu.js"></script>
+
+	<!-- Sticky js -->
+	<script src="~/js/sticky.js"></script>
+
+	<!--Internal  index js -->
+	<script src="~/js/index.js"></script>
+
+	<!-- Chart-circle js -->
+	<script src="~/js/circle-progress.min.js"></script>
+
+	<!-- Internal Data tables -->
+	<script src="~/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="~/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+	<script src="~/plugins/datatable/dataTables.responsive.min.js"></script>
+	<script src="~/plugins/datatable/responsive.bootstrap5.min.js"></script>
+
+	<!-- INTERNAL Select2 js -->
+	<script src="~/plugins/select2/js/select2.full.min.js"></script>
+	<script src="~/js/select2.js"></script>
+
+	<!-- Theme Color js -->
+	<script src="~/js/themecolor.js"></script>
+
+	<!-- Internal Owl Carousel js-->
+	<script src="~/plugins/owl-carousel/owl.carousel.js"></script>
+
+	<!---Internal  Multislider js-->
+	<script src="~/plugins/multislider/multislider.js"></script>
+	<script src="~/js/carousel.js"></script>
+
+	<!-- custom js -->
+	<script src="~/js/custom.js"></script>
+
+	<!-- Internal Data tables -->
+	<script src="~/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="~/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+	<script src="~/plugins/datatable/js/dataTables.buttons.min.js"></script>
+	<script src="~/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+	<script src="~/plugins/datatable/js/jszip.min.js"></script>
+	<script src="~/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+	<script src="~/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+	<script src="~/plugins/datatable/js/buttons.html5.min.js"></script>
+	<script src="~/plugins/datatable/js/buttons.print.min.js"></script>
+	<script src="~/plugins/datatable/js/buttons.colVis.min.js"></script>
+	<script src="~/plugins/datatable/dataTables.responsive.min.js"></script>
+	<script src="~/plugins/datatable/responsive.bootstrap5.min.js"></script>
+	<script src="~/js/table-data.js"></script>
+
+</body>
+</html>
