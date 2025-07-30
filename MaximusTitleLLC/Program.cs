@@ -5,6 +5,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/noaccess";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

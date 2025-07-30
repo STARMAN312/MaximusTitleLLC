@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+	var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+	var action = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<!DOCTYPE html>
 <html lang="en" style="--primary01: rgba(0, 54, 105, 0.1); --primary02: rgba(0, 54, 105, 0.2); --primary03: rgba(0, 54, 105, 0.3); --primary06: rgba(0, 54, 105, 0.6); --primary09: rgba(0, 54, 105, 0.9); --primary05: rgba(0, 54, 105, 0.5); --primary-bg-color: #003669; --primary-bg-hover: #00366995; --primary-bg-border: #003669; --dark-null: #003669; --transparent-null: #00366995; --primary-transparentcolor: #00366920; --darkprimary-null: #00366920; --transparentprimary-null: #00366920;">
 <head>
 	<meta charset="UTF-8">
@@ -25,6 +30,45 @@
 	<!---Skinmodes css-->
 	<link href="~/css/skin-modes.css" rel="stylesheet" />
 
+	<style>
+
+		.main-normal-footer {
+			background: linear-gradient(to right, rgba(0, 54, 105, 0.9) 50%, rgba(132, 147, 161, 0.9) 50%), url('/img/slider-1.jpg');
+			background-size: cover;
+			background-position: center;
+		}
+
+		.main-contact-footer{
+			background: linear-gradient(to right, rgba(0, 54, 105, 0.9) 50%, rgba(0, 54, 105, 0.9) 50%), url('/img/slider-1.jpg');
+			background-size: cover;
+			background-position: center;
+		}
+
+		.main-form-control::placeholder {
+		color: white;
+		}
+
+		.main-form-control::-webkit-input-placeholder {
+		color: white;
+		}
+
+		.main-form-control::-moz-placeholder {
+		color: white;
+		}
+
+		.main-form-control:-ms-input-placeholder {
+		color: white;
+		}
+
+		.banner-container {
+		position: relative;
+		width: 100vw;
+		overflow: hidden;
+		margin-left: calc(-50vw + 50%);
+		margin-right: calc(-50vw + 50%);
+		}
+	</style>
+
 </head>
 
 <body class="ltr main-body app light-theme horizontal sidebar-gone">
@@ -47,10 +91,6 @@
 								<img src="~/img/brand/logo.jpg" class="mobile-logo logo-1" alt="logo">
 							</a>
 						</div>
-						<div class="app-sidebar__toggle" data-bs-toggle="sidebar">
-							<a class="open-toggle" href="javascript:void(0);"><i class="header-icon fe fe-align-left"></i></a>
-							<a class="close-toggle" href="javascript:void(0);"><i class="header-icon fe fe-x"></i></a>
-						</div>
 						<div class="logo-horizontal">
 							<a asp-controller="Home" asp-action="Index" class="header-logo">
 								<img src="~/img/brand/logo.jpg" class="mobile-logo logo-1" alt="logo">
@@ -63,9 +103,24 @@
 						</button>
 						<div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0">
 							<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-								<ul class="nav nav-item header-icons navbar-nav-right ms-auto">
-									<li class="nav-item">
-										<a></a>
+								<ul class="nav nav-item header-icons navbar-nav-right ms-auto ">
+									<li class="nav-item mx-2 tx-bold">
+										<a asp-controller="Home" asp-action="About" class="@(controller == "Home" && action == "About" ? "active" : "tx-gray-500")">ABOUT</a>
+									</li>
+									<li class="nav-item mx-2 tx-bold">
+										<a asp-controller="Home" asp-action="Services" class="@(controller == "Home" && action == "Services" ? "active" : "tx-gray-500")">SERVICES</a>
+									</li>
+									<li class="dropdown nav-item main-header-notification d-flex mx-2 tx-bold">
+										<a href="" aria-expanded="false" aria-haspopup="true" data-bs-toggle="dropdown" class="@(controller == "Home" && (action == "IndustryLinks" || action == "CalculatorNTitleRates") ? "active" : "tx-gray-500")">
+											RESOURCES
+										</a>
+										<div class="dropdown-menu tx-12">
+											<a class="dropdown-item @(controller == "Home" && (action == "IndustryLinks") ? "active" : "tx-gray-500")" asp-controller="Home" asp-action="IndustryLinks">INDUSTRY LINKS</a>
+											<a class="dropdown-item @(controller == "Home" && (action == "CalculatorNTitleRates") ? "active" : "tx-gray-500")" asp-controller="Home" asp-action="CalculatorNTitleRates">CALCULATOR & TITLE RATES</a>
+										</div>
+									</li>
+									<li class="nav-item mx-2 tx-bold">
+										<a asp-controller="Home" asp-action="Contact" class="@(controller == "Home" && action == "Contact" ? "active" : "tx-gray-500")">CONTACT</a>
 									</li>
 								</ul>
 							</div>
@@ -98,19 +153,145 @@
 		</div>
 		<!-- /main-content -->
 		<!-- Footer opened -->
-		<div class="main-footer">
-			<div class="col-md-12 col-sm-12 text-center">
-				<div class="container-fluid pt-0 ht-100p">
-					Copyright © <script>document.write(new Date().getFullYear());</script>
-					<a class="text-primary">Maximus Title LLC</a>.
+		@if (controller == "Home" && action == "Contact")
+		{
+			<div class="main-footer main-contact-footer d-flex flex-row justify-content-center text-white border-0">
+				<div class="col-sm-4 col-lg-4 col-xl-4 d-flex flex-column align-items-start pd-t-30">
+					<img src="~/img/brand/logo (1).png" style="max-height:40px; width:auto; object-fit: contain;" />
+					<span class="mt-2">
+						We offer a variety of services that protect owners and lenders from damage or loss, combined with flexible closing and underwriting solutions. We are able to meet every real estate challenge.
+					</span>
+					<span class="tx-12 mt-4 mb-5">
+						©<script>document.write(new Date().getFullYear());</script> Maximus Title LLC. All rights reserved.
+					</span>
+				</div>
+				<div class="col-sm-4 col-lg-4 col-xl-4 pd-t-30 d-flex flex-column">
+					<div class="pd-t-20">
+						<a asp-controller="Home" asp-action="About" class="btn btn-outline-light text-white mx-2 mt-2">ABOUT</a>
+						<a asp-controller="Home" asp-action="Services" class="btn btn-outline-light text-white mx-2 mt-2">SERVICES</a>
+						<a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light text-white mx-2 mt-2">CONTACT</a>
+					</div>
 				</div>
 			</div>
-		</div>
+		}
+		else
+		{
+			<div class="main-footer main-normal-footer d-flex flex-row justify-content-center text-white border-0">
+				<div class="col-sm-4 col-lg-4 col-xl-4 d-flex flex-column align-items-start pd-t-30">
+					<img src="~/img/brand/logo (1).png" style="max-height:40px; width:auto; object-fit: contain;" />
+					<span class="mt-2">
+						We offer a variety of services that protect owners and lenders from damage or loss, combined with flexible closing and underwriting solutions. We are able to meet every real estate challenge.
+					</span>
+					<div class="pd-t-20">
+						<a asp-controller="Home" asp-action="About" class="btn btn-outline-light text-white mx-2 mt-2">ABOUT</a>
+						<a asp-controller="Home" asp-action="Services" class="btn btn-outline-light text-white mx-2 mt-2">SERVICES</a>
+						<a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light text-white mx-2 mt-2">CONTACT</a>
+					</div>
+					<span class="mt-4 tx-bold">
+						Corporate Office
+					</span>
+					<span>
+						100 Quentin Roosevelt Boulevard, Suite 501
+					</span>
+					<span>
+						Garden City NY 11530
+					</span>
+					<span class="mt-2 tx-bold">
+						Production Office
+					</span>
+					<span>
+						732 Smithtown Bypass, Suite 102B
+					</span>
+					<span>
+						Smithtown NY 11787
+					</span>
+					<span class="mt-2">
+						Phone: (212) 695-1212
+					</span>
+					<span>
+						Phone: (631) 328-4410
+					</span>
+					<span>
+						Fax: (516) 877-7603
+					</span>
+					<span>
+						Email: Info@Maximustitle.com
+					</span>
+
+					<span class="tx-12 mt-4 mb-5">
+						©<script>document.write(new Date().getFullYear());</script> Maximus Title. All rights reserved.
+					</span>
+				</div>
+				<div class="col-sm-4 col-lg-4 col-xl-4 pd-t-30 d-flex flex-column">
+					<span class="tx-20">
+						Contact us
+					</span>
+					<form class="form-group mt-4">
+						<input type="text" class="form-control main-form-control bg-transparent text-white" placeholder="Your Name" />
+						<input type="text" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Email Address" />
+						<input type="text" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Phone Number" />
+						<textarea id="messageTextarea" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Your Message" rows="4" maxlength="250"></textarea>
+						<div id="charCounter" class="char-counter tx-12 mt-2"></div>
+						<button class="btn btn-outline-light text-white mt-3">SUBMIT</button>
+					</form>
+				</div>
+			</div>
+		}
 		<!-- Footer closed -->
 	</div>
 	<!-- End Page -->
 	<!-- Back-to-top -->
 	<a href="#top" id="back-to-top"><i class="las la-arrow-up"></i></a>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const textarea = document.getElementById('messageTextarea');
+			const counter = document.getElementById('charCounter');
+			const maxLength = 250;
+
+			function updateCounter() {
+				const currentLength = textarea.value.length;
+				const remaining = maxLength - currentLength;
+
+				// Update counter text
+				counter.textContent = `${currentLength} of ${maxLength} max characters`;
+
+				// Update counter color based on usage
+				counter.classList.remove('tx-gray-400', 'text-warning', 'text-danger');
+
+				if (currentLength >= maxLength) {
+					counter.classList.add('text-danger');
+				} else if (currentLength >= maxLength * 0.8) { // 80% threshold
+					counter.classList.add('text-warning');
+				} else {
+					counter.classList.add('tx-gray-400');
+				}
+			}
+
+			// Update counter on input
+			textarea.addEventListener('input', updateCounter);
+
+			// Update counter on paste
+			textarea.addEventListener('paste', function() {
+				setTimeout(updateCounter, 10);
+			});
+
+			// Prevent typing beyond limit (backup to maxlength attribute)
+			textarea.addEventListener('keydown', function(e) {
+				const currentLength = textarea.value.length;
+
+				// Allow backspace, delete, arrow keys, etc.
+				const allowedKeys = [8, 9, 13, 27, 46, 37, 38, 39, 40];
+
+				if (currentLength >= maxLength && !allowedKeys.includes(e.keyCode) && !e.ctrlKey && !e.metaKey) {
+					e.preventDefault();
+				}
+			});
+
+			// Initialize counter
+			updateCounter();
+		});
+	</script>
 
 	<!-- JQuery min js -->
 	<script src="~/plugins/jquery/jquery.min.js"></script>

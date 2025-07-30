@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
-}
-
 .carousel-container {
     position: relative;
     width: 100vw;
@@ -160,4 +155,37 @@ body {
         .carousel-arrow.next {
             right: 1rem;
         }
+}
+
+.block1 {
+    background-image: url('../../img/home-service-1.jpg');
+}
+
+.block2 {
+    background-image: url('../../img/home-service-2.jpg');
+}
+
+.block3 {
+    background-image: url('../../img/home-service-3.jpg');
+}
+
+.block4 {
+    background-image: url('../../img/home-service-4.jpg');
+}
+
+.block1,
+.block2,
+.block3,
+.block4 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.quarter-height {
+    height: 30vh;
+}
+
+.half-height{
+    height: 50vh;
 }

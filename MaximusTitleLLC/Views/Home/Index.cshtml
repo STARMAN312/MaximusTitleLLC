@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Maximus Title";
+    ViewData["Title"] = "Maximus Title - Insurance & Escrow Services";
 }
 
 <link href="~/css/Home/Index.css" rel="stylesheet" />
@@ -9,7 +9,7 @@
         <div class="carousel-slide slide-1">
             <div class="slide-content">
                 <h1>MORE THAN TITLE INSURANCE</h1>
-                <a class="btn btn-secondary">
+                <a class="btn btn-secondary" asp-controller="Home" asp-action="About">
                     LEARN MORE
                 </a>
             </div>
@@ -17,7 +17,7 @@
         <div class="carousel-slide slide-2">
             <div class="slide-content">
                 <h1>WHAT CAN WE DO FOR YOU?</h1>
-                <a class="btn btn-secondary">
+                <a class="btn btn-secondary" asp-controller="Home" asp-action="Services">
                     VIEW SERVICES
                 </a>
             </div>
@@ -33,22 +33,256 @@
     </div>
 </div>
 <div class="row mt-5">
-    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
-        <div class="card">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 text-primary">
+        <div class="">
             <div class="card-body">
                 <h5 class="card-title mb-3">WELCOME TO MAXIMUS TITLE</h5>
-                <p class="card-text">We partner with property owners and developers to help them make accurate, profitable underwriting decisions. We specialize in commercial transactions, insuring hundreds of policies worth over $1 billiom every year.</p>
-                <a class="btn btn-primary text-white">ABOUT US</a>
+                <p class="card-text">
+                    We partner with property owners and developers to help them make accurate, profitable underwriting decisions. We specialize in commercial transactions, insuring hundreds of policies worth over $1 billion every year.
+                </p>
+                <a asp-controller="Home" asp-action="About" class="btn btn-primary text-white">ABOUT US</a>
             </div>
         </div>
     </div>
     <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 ">
-        <div class="card bg-primary  text-white">
-            <div class="card-body">
-                <h5 class="mb-3"><strong>WHY MAXIMUS TITLE?</strong></h5>
-                <p class="card-text">We reduce the risk for your most critical transactions, coordinating any and all aspects of your commercial closings and delivering meticulous monitoring of all your holdings. Our clients and partners enjoy a number of critical money saving services, but the most important service we provide is the assurance that your transaction will close in a timely, convenient manner, with all parties completeley satisfied.</p>
+        <div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
+            <div class="card mb-0">
+                <div class="card-header" id="headingOne" role="tab">
+                    <a aria-controls="collapseOne" aria-expanded="true" data-bs-toggle="collapse" href="#collapseOne">
+                        WHY MAXIMUS TITLE?
+                    </a>
+                </div>
+                <div aria-labelledby="headingOne" class="collapse show" data-bs-parent="#accordion" id="collapseOne" role="tabpanel">
+                    <div class="card-body">
+                        We reduce the risk for your most critical transactions, coordinating any and all aspects of your commercial closings and delivering meticulous monitoring of all your holdings. Our clients and partners enjoy a number of critical money-saving services, but the most important service we provide is the assurance that your transaction will close in a timely, convenient manner, with all parties completely satisfied.
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-0 mt-2">
+                <div class="card-header" id="headingTwo" role="tab">
+                    <a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-bs-toggle="collapse" href="#collapseTwo">
+                        WHAT MAKES US SPECIAL?
+                    </a>
+                </div>
+                <div aria-labelledby="headingTwo" class="collapse" data-bs-parent="#accordion" id="collapseTwo" role="tabpanel">
+                    <div class="card-body">
+                        Our primary competitive advantage—and yours—is our vast wealth of experience delivering high-volume property reporting for client holdings across broad geographical areas. The Maximus Team brings an unmatched depth of experience in title insurance and escrow services, and our clients are at the center of every decision we make. Most of our team members have over 25 years of experience delivering flexible, innovative solutions for a wide range of transactions.
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header" id="headingThree" role="tab">
+                    <a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-bs-toggle="collapse" href="#collapseThree">
+                        WHAT CAN WE DO FOR YOU?
+                    </a>
+                </div>
+                <div aria-labelledby="headingThree" class="collapse" data-bs-parent="#accordion" id="collapseThree" role="tabpanel">
+                    <div class="card-body">
+                        We work closely with property owners and developers to help them make accurate, profitable underwriting decisions. We specialize in commercial transactions, insuring hundreds of policies worth over $1 billion every year.
+                    </div>
+                </div><!-- collapse -->
             </div>
         </div>
+    </div>
+</div>
+<div class="banner-container bg-secondary text-white d-flex flex-row justify-content-around align-items-center pt-4 pb-4">
+    <strong class="tx-20">
+        PROTECT YOUR INVESTMENT WITH MAXIMUS TITLE
+    </strong>
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Contact">
+        CONTACT US
+    </a>
+</div>
+<div class="d-flex flex-row justify-content-center mt-5 mb-4">
+    <strong class="tx-20 text-primary">
+        OUR SERVICES
+    </strong>
+</div>
+<div class="banner-container rounder-0">
+    <div class="card">
+        <div class="row index1">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 bg-primary text-white">
+                <div class="d-flex flex-column justify-content-center align-items-center quarter-height">
+                    <strong class="tx-15">
+                        TITLE INSURANCE PROGRAMS
+                    </strong>
+                    <a class="btn btn-outline-light mt-3 tx-10 text-white" asp-controller="Home" asp-action="Services">
+                        LEARN MORE
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 block1 quarter-height">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 bg-gray-500 text-white">
+                <div class="d-flex flex-column justify-content-center align-items-center quarter-height">
+                    <strong class="tx-15">
+                        ADDITIONAL INFORMATION SEARCHES
+                    </strong>
+                    <a class="btn btn-outline-light mt-3 tx-10 text-white" asp-controller="Home" asp-action="Services">
+                        LEARN MORE
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 block2 quarter-height">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 block3 quarter-height">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 bg-secondary text-white">
+                <div class="d-flex flex-column justify-content-center align-items-center quarter-height">
+                    <strong class="tx-15">
+                        LOAN CLOSING SERVICES
+                    </strong>
+                    <a class="btn btn-outline-light mt-3 tx-10 text-white" asp-controller="Home" asp-action="Services">
+                        LEARN MORE
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 block4 quarter-height">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xxl-3 bg-gray-200 text-primary">
+                <div class="d-flex flex-column justify-content-center align-items-center quarter-height">
+                    <strong class="tx-15">
+                        COMMERCIAL SERVICES
+                    </strong>
+                    <a class="btn btn-outline-primary mt-3 tx-10" asp-controller="Home" asp-action="Services">
+                        LEARN MORE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex flex-row justify-content-center mt-5 mb-4">
+    <strong class="tx-20 text-primary">
+        FEATURED TRANSACTIONS
+    </strong>
+</div>
+<div class="banner-container panel panel-primary tabs-style-2">
+    <div class="tab-menu-heading">
+        <div class="tabs-menu1">
+            <ul class="nav panel-tabs main-nav-line d-flex flex-row justify-content-center">
+                <li><a href="#tab4" class="nav-link active" data-bs-toggle="tab">HUDSON GARDENS</a></li>
+                <li><a href="#tab5" class="nav-link" data-bs-toggle="tab">RECENT TRANSACTIONS</a></li>
+                <li><a href="#tab6" class="nav-link" data-bs-toggle="tab">HIGHLIGHTED TRANSACTIONS</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body tabs-menu-body main-content-body-right text-white p-0">
+        <div class="tab-content bg-primary">
+            <div class="tab-pane active" id="tab4">
+                <div class="row mt-5 mb-5 mx-5">
+                    <div class="col-sm-12 col-lg-12 col-xl-6 d-flex flex-column">
+                        <strong class="tx-20">
+                            HUDSON GARDENS
+                        </strong>
+                        <strong class="mt-3">
+                            35,000 GSF RETAIL:
+                        </strong>
+                        <span>
+                            YOU SAVE: $437.50 per month
+                        </span>
+                        <span>
+                            Based on typical industry cost of $0.0125 per square foor per month.
+                        </span>
+                        <strong class="mt-3">
+                            92 CONDO UNITS:
+                        </strong>
+                        <span>
+                            YOU SAVE: $6,900 to 9,200 per month
+                        </span>
+                        <span>
+                            Based on typical industry cost of $75-$100 per unit per month.
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-xl-6 d-flex flex-row-reverse">
+                        <img src="/img/hudsonGardens.jpg" style="height:100%; width:auto;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab5">
+                <div class="row mt-5 mb-5 mx-5">
+                    <div class="col-sm-12 col-lg-12 col-xl-6 d-flex flex-column">
+                        <span>
+                            <strong>$247,000,000</strong> Construction Loan for Condo Development - Lower Manhattan
+                        </span>
+                        <span class="mt-4">
+                            <strong>$440,000,000</strong> Financing on Manhattan Office Building - Manhattan
+                        </span>
+                        <span class="mt-4">
+                            <strong>$275,000,000</strong> Financing on Hotel/Retail/Condo Development - Manhattan
+                        </span>
+                        <span class="mt-4">
+                            <strong>$12,000,000</strong> Financing on Commercial Condominium Units Manhattan
+                        </span>
+                        <span class="mt-4">
+                            <strong>$2,830,382</strong> Refinance on Commercial Buildings - Staten Island
+                        </span>
+                        <span class="mt-4">
+                            <strong>$6,300,000</strong> Purchase on Condo, Park Avenue - Manhattan
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-xl-6 d-flex flex-row-reverse">
+                        <img src="/img/recent.jpg" style="height:100%; width:auto;" />
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab6">
+                <div class="row mt-5 mb-5 mx-5">
+                    <div class="col-sm-12 col-lg-12 col-xl-6 d-flex flex-column">
+                        <span>
+                            <strong>$803,000,000</strong> Refinance of a Major Midtown Office Building in Manhattan, New York
+                        </span>
+                        <span class="mt-4">
+                            <strong>$247,000,000</strong> Construction Loan for Condominium Development Transaction in Lower Manhattan, New York
+                        </span>
+                        <span class="mt-4">
+                            <strong>$40,000,000</strong> Development Financing in Las Vegas, Nevada
+                        </span>
+                        <span class="mt-4">
+                            <strong>$11,000,000</strong> Development Financing for Retail, Conference Center & Condominiums in Orlando, Florida
+                        </span>
+                        <span class="mt-4">
+                            <strong>$17,500,000</strong> Financing on 2 Shopping Malls in Southern California
+                        </span>
+                        <span class="mt-4">
+                            <strong>$29,000,000</strong> Financing on 4 Mobile Home Parks in South Florida
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-xl-6 d-flex flex-row-reverse">
+                        <img src="/img/highlighted.jpg" style="height:100%; width:auto;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex flex-row justify-content-center mb-5">
+    <div class="col-sm-3 col-lg-3 col-xl-3 mx-5 d-flex flex-column">
+        <i class="mdi mdi-account-outline tx-80 text-secondary"></i>
+        <strong class="tx-20 text-primary">
+            PROTECT YOURSELF
+        </strong>
+        <span class="text-primary">
+            Protect yourself from claims of property ownership by other parties
+        </span>
+    </div>
+    <div class="col-sm-3 col-lg-3 col-xl-3 mx-5 d-flex flex-column">
+        <i class="mdi mdi-shield-outline tx-80 text-secondary"></i>
+        <strong class="tx-20 text-primary">
+            PROTECT YOUR BUSINESS
+        </strong>
+        <span class="text-primary">
+            Protection your business from problems that arose before you bought the property
+        </span>
+    </div>
+    <div class="col-sm-3 col-lg-3 col-xl-3 mx-5 d-flex flex-column">
+        <i class="mdi mdi-briefcase tx-80 text-secondary"></i>
+        <strong class="tx-20 text-primary">
+            DEFENSE & ASSURANCE
+        </strong>
+        <span class="text-primary">
+            Ensure that you’ll receive defense in court if there is a claim against your property, and reimbursement for losses and legal fees
+        </span>
     </div>
 </div>
 <script>

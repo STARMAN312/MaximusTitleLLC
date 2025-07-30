@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Contact - Maximus Title";
+}
+
+<link href="~/css/Home/Contact.css" rel="stylesheet" />
+
+<div class="breadcrumb-header justify-content-between banner-container bg-primary pd-l-50 pd-r-50 pd-t-20 pd-b-20 mt-0 mb-0">
+    <div class="left-content">
+        <span class="main-content-title mg-b-0 mg-b-lg-1 text-white">CONTACT</span>
+    </div>
+    <div class="justify-content-center mt-2">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item tx-15"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Contact</li>
+        </ol>
+    </div>
+</div>
+<div class="banner">
+</div>
+<div class="lowerbanner d-flex flex-row justify-content-center align-items-stretch pd-t-30 pd-b-30">
+    <div class="col-sm-4 col-lg-4 col-xl-4 me-4 card rounded-0 mb-0 bg-primary text-white">
+        <div class="card-body d-flex flex-column align-items-start">
+            <span class="tx-bold tx-20">
+                CONTACT INFORMATION
+            </span>
+			<span class="mt-4 tx-bold">
+				Corporate Office
+			</span>
+			<span>
+				100 Quentin Roosevelt Boulevard, Suite 501
+			</span>
+			<span>
+				Garden City NY 11530
+			</span>
+			<span class="mt-4 tx-bold">
+				Production Office
+			</span>
+			<span>
+				732 Smithtown Bypass, Suite 102B
+			</span>
+			<span>
+				Smithtown NY 11787
+			</span>
+			<span class="mt-4">
+				<span class="tx-bold">
+					Phone:
+				</span>
+				(212) 695-1212
+			</span>
+			<span>
+				<span class="tx-bold">
+					Phone:
+				</span>
+				(631) 328-4410
+			</span>
+			<span>
+				<span class="tx-bold">
+					Fax:
+				</span>
+				(516) 877-7603
+			</span>
+			<span>
+				<span class="tx-bold">
+					Email:
+				</span>
+				Info@MaximusTitle.com
+			</span>
+			<span class="tx-bold tx-20 mt-4">
+				UNDERWRITERS
+			</span>
+			<div class="d-flex flex-row justify-content-around w-100 align-items-center mt-3">
+				<a href="https://www.firstam.com/" target="_blank" class="mt-2 align-items-center mg-r-10">
+					<img src="~/img/FA_logo.jpg"/>
+				</a>
+				<a href="https://www.firstam.com/" target="_blank" class="align-items-center special-a">
+					First American Title Insurance Company of New York
+				</a>
+			</div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-lg-4 col-xl-4 p-0 d-flex flex-column">
+		<span class="tx-20 text-primary tx-bold">
+			WE'RE READY TO HELP
+		</span>
+		<span class="mt-2">
+			A Maximus Title expert would be glad to answer any questions about your real estate needs. Please fill out the form below and we will be in touch as soon as possible!
+		</span>
+		<form class="form-group mt-4">
+			<input type="text" class="form-control bd-primary" placeholder="Your Name" />
+			<input type="text" class="form-control bg-transparent mt-3 bd-primary" placeholder="Email Address" />
+			<input type="text" class="form-control bg-transparent mt-3 bd-primary" placeholder="Phone Number" />
+			<textarea id="messageTextarea" class="form-control bg-transparent mt-3 bd-primary" placeholder="Your Message" rows="4" maxlength="250"></textarea>
+			<div id="charCounter" class="char-counter tx-12 mt-2"></div>
+			<button class="btn btn-primary mt-3">SUBMIT</button>
+		</form>
+    </div>
+</div>

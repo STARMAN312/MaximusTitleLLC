@@ -1,0 +1,32 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.banner {
+    position: relative;
+    width: 100vw;
+    height: 70vh;
+    overflow: hidden;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Default alignment */
+    background-image: url('../../img/slider-1.jpg');
+    padding: 20px; /* Add padding for smaller screens */
+}
+
+.special-a {
+    color: white;
+    text-decoration: none; /* Optional: remove underline */
+    transition: color 0.3s ease;
+}
+
+    .special-a:hover {
+        color: #f74f75; /* Replace with your desired hover color */
+    }
