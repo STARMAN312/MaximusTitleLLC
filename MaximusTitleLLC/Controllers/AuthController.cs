@@ -81,10 +81,10 @@ namespace MaximusTitleLLC.Controllers
                     var roles = await _userManager.GetRolesAsync(user);
 
                     if (roles.Contains("Admin"))
-                        return Redirect("https://localhost:7264/");
+                        return Redirect("https://guardiancapitolllc.com/");
 
                     if (roles.Contains("Client"))
-                        return Redirect("https://localhost:7264/account");
+                        return Redirect("https://guardiancapitolllc.com/Account");
                 }
             }
 
@@ -180,7 +180,7 @@ namespace MaximusTitleLLC.Controllers
                     Expires = session.ExpiresAt
                 });
 
-                return Redirect("https://localhost:7264/account");
+                return Redirect("https://guardiancapitolllc.com/Account");
             }
 
             foreach (var error in createResult.Errors)
