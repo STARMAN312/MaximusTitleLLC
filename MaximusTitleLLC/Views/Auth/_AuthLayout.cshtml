@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="--primary01: rgba(0, 54, 105, 0.1); --primary02: rgba(0, 54, 105, 0.2); --primary03: rgba(0, 54, 105, 0.3); --primary06: rgba(0, 54, 105, 0.6); --primary09: rgba(0, 54, 105, 0.9); --primary05: rgba(0, 54, 105, 0.5); --primary-bg-color: #003669; --primary-bg-hover: #00366995; --primary-bg-border: #003669; --dark-null: #003669; --transparent-null: #00366995; --primary-transparentcolor: #00366920; --darkprimary-null: #00366920; --transparentprimary-null: #00366920;">
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Title -->
+	<title>@ViewData["Title"]</title>
+
+	<!-- Favicon -->
+	<link rel="icon" href="~/img/brand/favicon.png" type="image/x-icon" />
+
+	<!-- Icons css -->
+	<link href="~/css/icons.css" rel="stylesheet">
+
+	<!--  bootstrap css-->
+	<link id="style" href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+	<!--- Style css --->
+	<link href="~/css/style.css" rel="stylesheet">
+	<link href="~/css/style-dark.css" rel="stylesheet">
+	<link href="~/css/style-transparent.css" rel="stylesheet">
+
+	<!---Skinmodes css-->
+	<link href="~/css/skin-modes.css" rel="stylesheet" />
+
+	<!--- Animations css-->
+	<link href="~/css/animate.css" rel="stylesheet">
+
+</head>
+<body class="ltr error-page1 bg-primary">
+
+	<!-- Loader -->
+	<div id="global-loader">
+		<img src="~/img/loader.svg" class="loader-img" alt="Loader">
+	</div>
+	<!-- /Loader -->
+
+	<div class="square-box">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<div class="page">
+		<div class="page-single">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-5 col-lg-6 col-md-8 col-sm-8 col-xs-10 card-sigin-main mx-auto my-auto py-4 justify-content-center">
+						<div class="card-sigin">
+							<div class="main-card-signin d-md-flex">
+								<div class="wd-100p">
+									<div class="d-flex mb-4">
+										<a asp-controller="Home" asp-action="Index"><img src="~/img/brand/favicon.png" class="sign-favicon ht-40" alt="logo"></a>
+									</div>
+									<div class="">
+										<div class="main-signup-header">
+											<div asp-validation-summary="ModelOnly" class="validation-summary text-danger flex-grow-1"></div>
+											@RenderBody()
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- JQuery min js -->
+	<script src="~/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap js -->
+	<script src="~/plugins/bootstrap/js/popper.min.js"></script>
+	<script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Moment js -->
+	<script src="~/plugins/moment/moment.js"></script>
+
+	<!-- eva-icons js -->
+	<script src="~/js/eva-icons.min.js"></script>
+
+	<!-- generate-otp js -->
+	<script src="~/js/generate-otp.js"></script>
+
+	<!--Internal  Perfect-scrollbar js -->
+	<script src="~/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+	<!-- Theme Color js -->
+	<script src="~/js/themecolor.js"></script>
+
+	<!-- custom js -->
+	<script src="~/js/custom.js"></script>
+
+</body>
+</html>

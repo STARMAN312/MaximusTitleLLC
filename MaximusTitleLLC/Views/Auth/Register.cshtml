@@ -1,0 +1,42 @@
+﻿@model RegisterVM
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Register - Maximus Title";
+}
+
+<h2 class="text-dark">Get Started</h2>
+<h6 class="font-weight-normal mb-4">It's free to create an account and only takes a minute.</h6>
+<form asp-action="Register" asp-controller="Auth" method="post">
+	<div class="form-group">
+		<label>Username</label>
+		<input asp-for="Username" class="form-control @(ViewData.ModelState["Username"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Enter your username" type="text">
+		<div class="invalid-feedback">
+			<span asp-validation-for="Username"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Full Name</label> 
+		<input asp-for="FullName" class="form-control @(ViewData.ModelState["FullName"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Enter your full name" type="text">
+		<div class="invalid-feedback">
+			<span asp-validation-for="FullName"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Email</label> 
+		<input asp-for="Email" class="form-control @(ViewData.ModelState["Email"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Enter your email" type="text">
+		<div class="invalid-feedback">
+			<span asp-validation-for="Email"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Password</label> 
+		<input asp-for="Password" class="form-control @(ViewData.ModelState["Password"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Enter your password" type="password">
+		<div class="invalid-feedback">
+			<span asp-validation-for="Password"></span>
+		</div>
+	</div>
+	<button class="btn btn-primary btn-block">Create Account</button>
+</form>
+<div class="main-signup-footer mt-3 text-center">
+	<p>Already have an account? <a asp-controller="Auth" asp-action="Index">Log In</a></p>
+</div>

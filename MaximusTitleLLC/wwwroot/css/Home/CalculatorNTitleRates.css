@@ -17,6 +17,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-start; /* Default alignment */
-    background-image: url('../../img/slider-1.jpg');
+    background-image: url('../../img/calculator-forms-header.jpg');
     padding: 20px; /* Add padding for smaller screens */
 }

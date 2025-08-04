@@ -1,0 +1,28 @@
+﻿@model LogInVM
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Login - Maximus Title";
+}
+
+<h2>Welcome back!</h2>
+<h6 class="font-weight-semibold mb-4">Please sign in to continue.</h6>
+<form asp-action="Index" asp-controller="Auth" method="post">
+	<div class="form-group">
+		<label>Username</label> 
+		<input asp-for="Username" class="form-control @(ViewData.ModelState["Username"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Enter your username" type="text">
+		<div class="invalid-feedback">
+			<span asp-validation-for="Username"></span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Password</label> 
+		<input asp-for="Password" class="form-control @(ViewData.ModelState["Password"]?.Errors.Count > 0 ? "is-invalid" : "")" placeholder="Enter your password" type="password">
+		<div class="invalid-feedback">
+			<span asp-validation-for="Password"></span>
+		</div>
+	</div>
+	<button class="btn btn-primary btn-block" type="submit">Log In</button>
+</form>
+<div class="main-signin-footer text-center mt-3">
+	<p>Don't have an account? <a asp-controller="Auth" asp-action="Register">Create an Account</a></p>
+</div>

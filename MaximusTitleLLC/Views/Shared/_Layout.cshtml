@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ContactFormVM
+
+@{
 	var controller = ViewContext.RouteData.Values["controller"]?.ToString();
 	var action = ViewContext.RouteData.Values["action"]?.ToString();
 }
@@ -30,44 +32,7 @@
 	<!---Skinmodes css-->
 	<link href="~/css/skin-modes.css" rel="stylesheet" />
 
-	<style>
-
-		.main-normal-footer {
-			background: linear-gradient(to right, rgba(0, 54, 105, 0.9) 50%, rgba(132, 147, 161, 0.9) 50%), url('/img/slider-1.jpg');
-			background-size: cover;
-			background-position: center;
-		}
-
-		.main-contact-footer{
-			background: linear-gradient(to right, rgba(0, 54, 105, 0.9) 50%, rgba(0, 54, 105, 0.9) 50%), url('/img/slider-1.jpg');
-			background-size: cover;
-			background-position: center;
-		}
-
-		.main-form-control::placeholder {
-		color: white;
-		}
-
-		.main-form-control::-webkit-input-placeholder {
-		color: white;
-		}
-
-		.main-form-control::-moz-placeholder {
-		color: white;
-		}
-
-		.main-form-control:-ms-input-placeholder {
-		color: white;
-		}
-
-		.banner-container {
-		position: relative;
-		width: 100vw;
-		overflow: hidden;
-		margin-left: calc(-50vw + 50%);
-		margin-right: calc(-50vw + 50%);
-		}
-	</style>
+	<link href="~/css/Layouts/_Layout.css" rel="stylesheet"/>
 
 </head>
 
@@ -103,11 +68,11 @@
 						</button>
 						<div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0">
 							<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-								<ul class="nav nav-item header-icons navbar-nav-right ms-auto ">
-									<li class="nav-item mx-2 tx-bold">
+								<ul class="nav nav-item header-icons navbar-nav-right ms-auto align-items-center">
+									<li class="nav-item main-header-notification mx-2 tx-bold">
 										<a asp-controller="Home" asp-action="About" class="@(controller == "Home" && action == "About" ? "active" : "tx-gray-500")">ABOUT</a>
 									</li>
-									<li class="nav-item mx-2 tx-bold">
+									<li class="nav-item main-header-notification mx-2 tx-bold">
 										<a asp-controller="Home" asp-action="Services" class="@(controller == "Home" && action == "Services" ? "active" : "tx-gray-500")">SERVICES</a>
 									</li>
 									<li class="dropdown nav-item main-header-notification d-flex mx-2 tx-bold">
@@ -119,9 +84,33 @@
 											<a class="dropdown-item @(controller == "Home" && (action == "CalculatorNTitleRates") ? "active" : "tx-gray-500")" asp-controller="Home" asp-action="CalculatorNTitleRates">CALCULATOR & TITLE RATES</a>
 										</div>
 									</li>
-									<li class="nav-item mx-2 tx-bold">
+									<li class="nav-item main-header-notification mx-2 tx-bold">
 										<a asp-controller="Home" asp-action="Contact" class="@(controller == "Home" && action == "Contact" ? "active" : "tx-gray-500")">CONTACT</a>
 									</li>
+									@if (User.IsInRole("Client"))
+									{
+										<li class="nav-item main-header-notification mx-2 tx-bold">
+											<a href="https://localhost:7264/Account" class="tx-gray-500">ACCOUNT</a>
+										</li>
+									}
+									else if(User.IsInRole("Admin"))
+									{
+										<li class="nav-item main-header-notification mx-2 tx-bold">
+											<a href="https://localhost:7264/" class="tx-gray-500">ACCOUNT</a>
+										</li>
+									}
+									@if (User.Identity.IsAuthenticated)
+									{
+										<li class="nav-item main-header-notification mx-2 tx-bold">
+											<a href="#" id="logout-link" class="text-danger">LOG OUT</a>
+										</li>
+									}
+									else
+									{
+										<li class="nav-item main-header-notification mx-2 tx-bold">
+											<a class="tx-gray-500" asp-controller="Auth" asp-action="Index">LOG IN</a>
+										</li>
+									}
 								</ul>
 							</div>
 						</div>
@@ -147,6 +136,25 @@
 		<div class="main-content app-content">
 			<!-- container -->
 			<div class="main-container container-fluid">
+				@if (TempData["NotificationMessage"] != null)
+				{
+					<div class="pos-relative mx-sm-5 mt-2" style="z-index: 2">
+						<div class="demo-static-toast pos-absolute t-0 r-0">
+							<div aria-atomic="true" aria-live="assertive" class="toast fade show" role="alert" data-bs-autohide="true" data-bs-delay="5">
+								<!-- 5000 milliseconds = 5 seconds -->
+								<div class="toast-header">
+									<h6 class="tx-14 mg-b-0 mg-r-auto">Notification</h6>
+									<button aria-label="Close" class="ms-2 mb-1 close tx-normal" data-bs-dismiss="toast" type="button">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="toast-body">
+									@TempData["NotificationMessage"]
+								</div>
+							</div>
+						</div>
+					</div>
+				}
 				@RenderBody()
 			</div>
 			<!-- /Container -->
@@ -170,14 +178,16 @@
 						<a asp-controller="Home" asp-action="About" class="btn btn-outline-light text-white mx-2 mt-2">ABOUT</a>
 						<a asp-controller="Home" asp-action="Services" class="btn btn-outline-light text-white mx-2 mt-2">SERVICES</a>
 						<a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light text-white mx-2 mt-2">CONTACT</a>
+						<a asp-controller="Home" asp-action="IndustryLinks" class="btn btn-outline-light text-white mx-2 mt-2">INDUSTRY LINKS</a>
+						<a asp-controller="Home" asp-action="CalculatorNTitleRates" class="btn btn-outline-light text-white mx-2 mt-2">CALCULATOR & TITLE RATES</a>
 					</div>
 				</div>
 			</div>
 		}
 		else
 		{
-			<div class="main-footer main-normal-footer d-flex flex-row justify-content-center text-white border-0">
-				<div class="col-sm-4 col-lg-4 col-xl-4 d-flex flex-column align-items-start pd-t-30">
+			<div class="main-footer main-normal-footer d-flex flex-column flex-lg-row justify-content-center text-white border-0">
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex flex-column align-items-start pd-t-30">
 					<img src="~/img/brand/logo (1).png" style="max-height:40px; width:auto; object-fit: contain;" />
 					<span class="mt-2">
 						We offer a variety of services that protect owners and lenders from damage or loss, combined with flexible closing and underwriting solutions. We are able to meet every real estate challenge.
@@ -186,6 +196,8 @@
 						<a asp-controller="Home" asp-action="About" class="btn btn-outline-light text-white mx-2 mt-2">ABOUT</a>
 						<a asp-controller="Home" asp-action="Services" class="btn btn-outline-light text-white mx-2 mt-2">SERVICES</a>
 						<a asp-controller="Home" asp-action="Contact" class="btn btn-outline-light text-white mx-2 mt-2">CONTACT</a>
+						<a asp-controller="Home" asp-action="IndustryLinks" class="btn btn-outline-light text-white mx-2 mt-2">INDUSTRY LINKS</a>
+						<a asp-controller="Home" asp-action="CalculatorNTitleRates" class="btn btn-outline-light text-white mx-2 mt-2">CALCULATOR & TITLE RATES</a>
 					</div>
 					<span class="mt-4 tx-bold">
 						Corporate Office
@@ -222,17 +234,19 @@
 						©<script>document.write(new Date().getFullYear());</script> Maximus Title. All rights reserved.
 					</span>
 				</div>
-				<div class="col-sm-4 col-lg-4 col-xl-4 pd-t-30 d-flex flex-column">
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 pd-t-30 d-flex flex-column">
 					<span class="tx-20">
 						Contact us
 					</span>
-					<form class="form-group mt-4">
-						<input type="text" class="form-control main-form-control bg-transparent text-white" placeholder="Your Name" />
-						<input type="text" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Email Address" />
-						<input type="text" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Phone Number" />
-						<textarea id="messageTextarea" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Your Message" rows="4" maxlength="250"></textarea>
+					<form asp-action="SendMessage" asp-controller="Home" method="post" class="form-group mt-4">
+						<input type="hidden" name="ReturnUrl" value="@Context.Request.Path" />
+						<input asp-for="Name" class="form-control main-form-control bg-transparent text-white" placeholder="Your Name" />
+						<input asp-for="Email" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Email Address" />
+						<input asp-for="Phone" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Phone Number" />
+						<textarea asp-for="Message" id="messageTextarea" class="form-control main-form-control bg-transparent text-white mt-3" placeholder="Your Message" rows="4" maxlength="250"></textarea>
 						<div id="charCounter" class="char-counter tx-12 mt-2"></div>
-						<button class="btn btn-outline-light text-white mt-3">SUBMIT</button>
+						<div class="h-captcha" data-sitekey="46b6a48a-b284-48c2-a47a-abd2ab160924"></div>
+						<button class="btn btn-outline-light text-white mt-3" type="submit">SUBMIT</button>
 					</form>
 				</div>
 			</div>
@@ -243,6 +257,8 @@
 	<!-- Back-to-top -->
 	<a href="#top" id="back-to-top"><i class="las la-arrow-up"></i></a>
 
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://hcaptcha.com/1/api.js" async defer></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			const textarea = document.getElementById('messageTextarea');
@@ -290,6 +306,26 @@
 
 			// Initialize counter
 			updateCounter();
+		});
+
+		document.getElementById("logout-link").addEventListener("click", function (e) {
+			e.preventDefault();
+
+			Swal.fire({
+					title: 'Are you sure you want to log out?',
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonText: 'Yes, log out',
+					cancelButtonText: 'Cancel',
+					customClass: {
+						cancelButton: 'btn btn-primary text-white',
+						confirmButton: 'btn btn-danger text-white'
+					}
+			}).then((result) => {
+				if (result.isConfirmed) {
+					window.location.href = '/Auth/LogOut';
+				}
+			});
 		});
 	</script>
 

@@ -1,0 +1,43 @@
+﻿.main-normal-footer {
+    background: linear-gradient(to right, rgba(0, 54, 105, 0.9) 50%, rgba(132, 147, 161, 0.9) 50%), url('/img/slider-1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 991.98px) {
+    .main-normal-footer {
+        background: linear-gradient(to bottom, rgba(0, 54, 105, 0.9), rgba(0, 54, 105, 0.9)), url('/img/slider-1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.main-contact-footer {
+    background: linear-gradient(to right, rgba(0, 54, 105, 0.9) 50%, rgba(0, 54, 105, 0.9) 50%), url('/img/slider-1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.main-form-control::placeholder {
+    color: white;
+}
+
+.main-form-control::-webkit-input-placeholder {
+    color: white;
+}
+
+.main-form-control::-moz-placeholder {
+    color: white;
+}
+
+.main-form-control:-ms-input-placeholder {
+    color: white;
+}
+
+.banner-container {
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
