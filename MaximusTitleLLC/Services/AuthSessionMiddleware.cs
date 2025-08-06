@@ -33,7 +33,6 @@ namespace MaximusTitleLLC.Services
 
                     context.Items["User"] = user;
 
-                    // If not authenticated yet, sign in the user
                     if (!context.User.Identity?.IsAuthenticated ?? true)
                     {
                         var claims = new List<Claim>
@@ -42,7 +41,6 @@ namespace MaximusTitleLLC.Services
                         new Claim(ClaimTypes.Name, user.UserName ?? user.Email ?? "Unknown")
                     };
 
-                        // ✅ Get Identity roles and add as claims
                         var roles = await userManager.GetRolesAsync(user);
                         foreach (var role in roles)
                         {
@@ -58,13 +56,7 @@ namespace MaximusTitleLLC.Services
                 }
                 else
                 {
-                    if (context.User.Identity!.IsAuthenticated)
-                    {
-                        await context.SignOutAsync(IdentityConstants.ApplicationScheme);
-                        context.User = new ClaimsPrincipal(new ClaimsIdentity());
-                    }
-
-                    context.Response.Cookies.Delete("auth_session_id");
+                    context.Response.Redirect("/Auth/Logout");
                 }
             }
 

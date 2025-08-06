@@ -169,7 +169,7 @@ namespace MaximusTitleLLC.Controllers
                     Expires = session.ExpiresAt
                 });
 
-                return Redirect("https://guardiancapitolllc.com/Account");
+                return Redirect($"https://guardiancapitolllc.com/Home/SessionSync?token={session.SessionId}");
             }
 
             foreach (var error in createResult.Errors)
