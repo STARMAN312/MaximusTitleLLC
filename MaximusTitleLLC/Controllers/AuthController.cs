@@ -74,18 +74,7 @@ namespace MaximusTitleLLC.Controllers
                     Expires = session.ExpiresAt
                 });
 
-                var user = await _userManager.FindByNameAsync(Model.Username);
-
-                if (user != null)
-                {
-                    var roles = await _userManager.GetRolesAsync(user);
-
-                    if (roles.Contains("Admin"))
-                        return Redirect("https://guardiancapitolllc.com/");
-
-                    if (roles.Contains("Client"))
-                        return Redirect("https://guardiancapitolllc.com/Account");
-                }
+                return Redirect($"https://guardiancapitolllc.com/Home/SessionSync?token={session.SessionId}");
             }
 
             ModelState.AddModelError(string.Empty, "An error ocurred while logging you in, pleas try again later.");
