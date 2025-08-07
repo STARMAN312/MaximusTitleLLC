@@ -4,6 +4,7 @@ using MaximusTitleLLC.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -14,15 +15,19 @@ namespace MaximusTitleLLC.Controllers
     {
 
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
-        public AuthController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
+        private readonly string _frontendBaseUrl;
+        public AuthController(
+            UserManager<ApplicationUser> userManager, 
+            SignInManager<ApplicationUser> signInManager, 
+            ApplicationDbContext context, 
+            IOptions<AppSettings> options)
         {
             _userManager = userManager;
-            _roleManager = roleManager;
             _signInManager = signInManager;
             _context = context;
+            _frontendBaseUrl = options.Value.FrontendBaseUrl;
         }
 
         public IActionResult Index()
@@ -74,7 +79,8 @@ namespace MaximusTitleLLC.Controllers
                     Expires = session.ExpiresAt
                 });
 
-                return Redirect($"https://guardiancapitolllc.com/Home/SessionSync?token={session.SessionId}");
+                var redirectUrl = $"{_frontendBaseUrl}/Home/SessionSync?token={session.SessionId}";
+                return Redirect(redirectUrl);
             }
 
             ModelState.AddModelError(string.Empty, "An error ocurred while logging you in, pleas try again later.");
@@ -169,7 +175,8 @@ namespace MaximusTitleLLC.Controllers
                     Expires = session.ExpiresAt
                 });
 
-                return Redirect($"https://guardiancapitolllc.com/Home/SessionSync?token={session.SessionId}");
+                var redirectUrl = $"{_frontendBaseUrl}/Home/SessionSync?token={session.SessionId}";
+                return Redirect(redirectUrl);
             }
 
             foreach (var error in createResult.Errors)

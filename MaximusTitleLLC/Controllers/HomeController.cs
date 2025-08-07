@@ -3,6 +3,7 @@ using MaximusTitleLLC.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.Diagnostics;
 
 public class HomeController : Controller
@@ -10,14 +11,14 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly string _frontendBaseUrl;
 
-    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, UserManager<ApplicationUser> userManager, IOptions<AppSettings> options)
     {
         _logger = logger;
         _context = context;
         _userManager = userManager;
-        _roleManager = roleManager;
+        _frontendBaseUrl = options.Value.FrontendBaseUrl;
     }
 
     public IActionResult Index()
@@ -168,14 +169,15 @@ public class HomeController : Controller
         var user = session.User;
         var roles = await _userManager.GetRolesAsync(user!);
 
+        var redirectUrl = "";
+
         // Redirect based on roles
         if (roles.Contains("Admin"))
-            return Redirect("https://guardiancapitolllc.com/");
+            redirectUrl = $"{_frontendBaseUrl}/";
 
         if (roles.Contains("Client"))
-            return Redirect("https://guardiancapitolllc.com/Account");
+            redirectUrl = $"{_frontendBaseUrl}/Account";
 
-        // Default redirect if no roles matched
-        return Redirect("/");
+        return Redirect(redirectUrl);
     }
 }
