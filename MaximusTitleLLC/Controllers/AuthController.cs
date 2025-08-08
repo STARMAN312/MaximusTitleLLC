@@ -74,8 +74,8 @@ namespace MaximusTitleLLC.Controllers
                 Response.Cookies.Append("auth_session_id", session.SessionId.ToString(), new CookieOptions
                 {
                     HttpOnly = true,
+                    SameSite = SameSiteMode.None,
                     Secure = true,
-                    SameSite = SameSiteMode.Lax,
                     Expires = session.ExpiresAt
                 });
 
@@ -170,8 +170,8 @@ namespace MaximusTitleLLC.Controllers
                 Response.Cookies.Append("auth_session_id", session.SessionId.ToString(), new CookieOptions
                 {
                     HttpOnly = true,
+                    SameSite = SameSiteMode.None,
                     Secure = true,
-                    SameSite = SameSiteMode.Lax,
                     Expires = session.ExpiresAt
                 });
 

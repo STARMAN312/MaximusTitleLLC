@@ -161,8 +161,8 @@ public class HomeController : Controller
         Response.Cookies.Append("auth_session_id", token, new CookieOptions
         {
             HttpOnly = true,
-            Secure = true,
             SameSite = SameSiteMode.None,
+            Secure = true,
             Expires = session.ExpiresAt
         });
 
