@@ -162,7 +162,7 @@ public class HomeController : Controller
         {
             HttpOnly = true,
             Secure = true,
-            SameSite = SameSiteMode.Lax,
+            SameSite = SameSiteMode.None,
             Expires = session.ExpiresAt
         });
 
