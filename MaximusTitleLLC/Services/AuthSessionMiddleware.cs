@@ -56,7 +56,10 @@ namespace MaximusTitleLLC.Services
                 }
                 else
                 {
-                    context.Response.Redirect("/Auth/Logout");
+                    context.Response.Cookies.Delete("auth_session_id");
+
+                    context.Response.Redirect("/Account/Logout");
+                    return;
                 }
             }
 
